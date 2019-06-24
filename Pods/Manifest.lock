@@ -1,0 +1,38 @@
+PODS:
+  - MaterialComponents/AnimationTiming (84.5.0)
+  - MaterialComponents/Cards (84.5.0):
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Icons/ic_check_circle
+    - MaterialComponents/private/Math
+    - MaterialComponents/Ripple
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Shapes
+  - MaterialComponents/Ink (84.5.0):
+    - MaterialComponents/private/Math
+  - MaterialComponents/private/Icons/Base (84.5.0)
+  - MaterialComponents/private/Icons/ic_check_circle (84.5.0):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/Math (84.5.0)
+  - MaterialComponents/Ripple (84.5.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/private/Math
+  - MaterialComponents/ShadowElevations (84.5.0)
+  - MaterialComponents/ShadowLayer (84.5.0):
+    - MaterialComponents/ShadowElevations
+  - MaterialComponents/Shapes (84.5.0):
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
+
+DEPENDENCIES:
+  - MaterialComponents/Cards
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - MaterialComponents
+
+SPEC CHECKSUMS:
+  MaterialComponents: 4f1d0258d14aaf47215c2d710d3b5d915e370622
+
+PODFILE CHECKSUM: 32e2151557bec7dd87e945935e0dfe1cd49529b2
+
+COCOAPODS: 1.7.2
