@@ -18,6 +18,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     private var buttons:[UIButton] = [UIButton]()
     private var informationList:[InformationModel] = [InformationModel]()
     private var infoAux:[InformationModel] = [InformationModel]()
+    private var initialButton:Bool = true
+    private var initialTag:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +48,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let name:String = tags[indexPath.row]
             // Set resources
             cell.tagButton.setTitle(name.uppercased(), for: .normal)
-            
+            // Change color to the first button
+            if initialButton && name.elementsEqual(initialTag){
+                cell.tagButton.backgroundColor = UIColor.red
+            }
             // Add to the array each button
             if !existButton(nameToValue: name.uppercased()){
                 buttons.append(cell.tagButton)
@@ -107,6 +112,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // MARK: Methods UIButton
     @IBAction func selectedButtonAction(_ sender: UIButton) {
+        initialButton = false
+        // Change color to all
+        for button in buttons{
+            button.backgroundColor = UIColor.darkGray
+        }
+        
+        // Change color to the selected button
+        sender.backgroundColor = UIColor.red
+        
         // Obtain the value
         let tagToSearch:String = sender.currentTitle!
         // Is posiblle that here, you load the new info with tag indicated
@@ -119,6 +133,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // (This data would usually come from a local content provider or remote server
         // For example, we will obtain 4 data (is possible that you use a Model)
         tags = ["ALL", "GENERAL", "MOBILE", "WEB"]
+        initialTag = tags[0]
     }
     
     private func initInfo(){
@@ -157,7 +172,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // In our case, we will obtain the data of our list initial
         // Therefore, we copy the initial data to another list (infoAux) and no lost data
         var newInfo:[InformationModel] = [InformationModel]()
-        if tag.contains("ALL") {
+        if tag.elementsEqual("ALL") {
             newInfo = informationList
         }
         else {
